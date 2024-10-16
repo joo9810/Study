@@ -30,3 +30,13 @@ footer {
     clear: both;
     height:10vh;
 }
+img {
+    width: 90px;
+    height: 90px;
+}
+h1 a {
+    display: flex;
+    align-items: center; /* 이미지와 텍스트를 세로로 가운데 정렬 */
+    justify-content: center; /* 플렉스 컨테이너 안의 요소들 수평 중앙 정렬 */
+
+}
