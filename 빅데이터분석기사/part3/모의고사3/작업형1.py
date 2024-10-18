@@ -38,18 +38,18 @@ AM_df = df[df['AM/PM'] == 'AM']
 print(len(AM_df[AM_df['specialist for a treatment'] == 'No']))
 
 # 3.
-label_encoder = LabelEncoder()
+convert_dict = {'Yes' : 1, 'No' : 0}
 
 # print(df)
-df['Marital status'] = label_encoder.fit_transform(df['Marital status'])
-df['Depression'] = label_encoder.fit_transform(df['Depression'])
-df['Anxiety'] = label_encoder.fit_transform(df['Anxiety'])
-df['Panic attack'] = label_encoder.fit_transform(df['Panic attack'])
-df['specialist for a treatment'] = label_encoder.fit_transform(df['specialist for a treatment'])
+df['Marital status'] = df['Marital status'].map(convert_dict)
+df['Depression'] = df['Depression'].map(convert_dict)
+df['Anxiety'] = df['Anxiety'].map(convert_dict)
+df['Panic attack'] = df['Panic attack'].map(convert_dict)
+df['specialist for a treatment'] = df['specialist for a treatment'].map(convert_dict)
 # print(df) # Yes : 1, No : 0
 
 df['Total'] = df['Marital status'] + df['Depression'] + df['Anxiety'] + df['Panic attack'] + df['specialist for a treatment']
 # print(df)
 
 sorted_df = df.sort_values('Total', ascending=False).head(10)['current year of Study']
-print(sorted_df.sort_values(ascending=False).values[0])
+print(sorted_df.mode().values[0])
