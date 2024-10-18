@@ -50,4 +50,10 @@ r2 = r2_score(y_valid, y_pred)
 mae = mean_absolute_error(y_valid, y_pred)
 print(r2, mae)
 
-pd.DataFrame({'prediction' : y_pred}).to_csv('모의고사3.csv', index=False)
+# x_test.info() # 결측치 존재
+x_test = x_test.fillna(x_test.mean())
+# x_test.info() # 결측치 없음
+
+y_pred_test = model.predict(x_test)
+
+pd.DataFrame({'prediction' : y_pred_test}).to_csv('모의고사3.csv', index=False)
