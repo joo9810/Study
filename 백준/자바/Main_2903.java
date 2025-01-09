@@ -1,5 +1,7 @@
 package 자바;
 
+// 중앙 이동 알고리즘
+
 import java.util.Scanner;
 
 public class Main_2903 {
