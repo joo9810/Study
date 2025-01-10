@@ -18,5 +18,7 @@ public class Main_2903 {
         result = (int) Math.pow(a, 2);
     
         System.out.println(result);
+
+        sc.close();
     }
 }

@@ -20,5 +20,7 @@ public class Main_2292 {
         }
 
         System.out.println(move);
+
+        sc.close();
     }
 }

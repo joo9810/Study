@@ -32,6 +32,8 @@ public class Main_1193 {
         }
 
         System.out.println(row + "/" + col);
+
+        sc.close();
     }
 }
 
