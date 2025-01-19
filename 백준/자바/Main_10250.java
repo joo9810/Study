@@ -14,22 +14,24 @@ public class Main_10250 {
             int W = intInput[1];
             int N = intInput[2];
 
-            StringBuilder strb = new StringBuilder();
-            if (N % H == 0) {
-                strb.append(H);
-            } else {
-                strb.append(N % H);
+            if (W >= 1) {
+                StringBuilder strb = new StringBuilder();
+                if (N % H == 0) {
+                    strb.append(H);
+                } else {
+                    strb.append(N % H);
+                }
+    
+                if ((int) Math.ceil((double) N / H) < 10) {
+                    strb.append("0");
+                    strb.append((int) Math.ceil((double) N / H));
+                } else {
+                    strb.append((int) Math.ceil((double) N / H));
+                }
+    
+                int result = Integer.parseInt(strb.toString());
+                System.out.println(result);
             }
-
-            if ((int) Math.ceil((double) N / H) < 10) {
-                strb.append("0");
-                strb.append((int) Math.ceil((double) N / H));
-            } else {
-                strb.append((int) Math.ceil((double) N / H));
-            }
-
-            int result = Integer.parseInt(strb.toString());
-            System.out.println(result);
         }
     }
 }
