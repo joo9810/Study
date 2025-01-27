@@ -1,4 +1,4 @@
-package 백준.자바;
+package 자바;
 
 import java.io.*;
 import java.util.*;
