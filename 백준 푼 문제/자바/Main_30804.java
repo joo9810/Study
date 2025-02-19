@@ -10,55 +10,39 @@ public class Main_30804 {
         int[] inputArr = new int[N];
         inputArr = Arrays.stream(br.readLine().split(" ")).mapToInt(Integer::parseInt).toArray();
 
+        Map<Integer, Integer> map = new HashMap<>();
+
+        int left = 0;
+        int right = 0;
         int maxLength = 0;
-        int maxStart = 0;
-        int maxEnd = 0;
-        int newStart = 0;
-        boolean complete = false;
-        Set<Integer> set = new HashSet<>();
-        while (true) {
-            int start = newStart;
-            for (int i=start; i<N; i++) {
-                set.add(inputArr[i]);
-                if (set.size() > 2) { // set이 3개 이상이거나 i가 마지막까지 갔을때
-                    int length = i - start;
+        while (right < N) {
+            if (map.keySet().size() <= 2) { // 탕후루 종류가 2종류 이하면
+                // 오른쪽 위치 확인
+                int rightKey = inputArr[right];
+                if (map.containsKey(rightKey)) { // 키가 있으면
+                    map.put(rightKey, map.get(rightKey)+1);
+                } else { // 키가 없으면
+                    map.put(rightKey, 1);
+                }
+                // 길이 측정
+                if (map.keySet().size() <= 2) { // 오른쪽 확인 후에도 종류가 2종류 이하면
+                    // 길이 측정 후 오른쪽 위치 이동
+                    int length = right - left + 1;
                     if (length > maxLength) {
                         maxLength = length;
-                        maxStart = start;
-                        maxEnd = i-1;
-                    }
-                    set.clear();
-                    break;
-                } else if (i == N-1) {
-                    int length = i - start + 1;
-                    //System.out.println(length);
-                    if (length > maxLength) {
-                        maxLength = length;
-                        maxStart = start;
-                        maxEnd = i;
-                    }
-                    set.clear();
-                }
-
-                if (i > 0) {
-                    if (i != N-1) {
-                        if (inputArr[i] != inputArr[i-1]) {
-                            newStart = i;
-                            //System.out.println(newStart);
-                        }
-                    } else {
-                        if (inputArr[start] == inputArr[i]) {
-                            complete = true;
-                        }
                     }
                 }
-            }
-
-            if (complete) {
-                break;
+                right += 1;
+            } else { // 탕후루 종류가 2종류 이상이면
+                // 왼쪽 위치 확인
+                int leftKey = inputArr[left];
+                map.put(leftKey, map.get(leftKey)-1);
+                if (map.get(leftKey) == 0) { // 왼쪽 위치를 뺐을때 탕후루 개수가 0개면
+                    map.remove(leftKey); // 그 과일을 키에서 삭제
+                }
+                left += 1; // 왼쪽 위치를 증가
             }
         }
-        System.out.println(maxStart + " " + maxEnd);
-        System.out.println(maxEnd - maxStart + 1);
+        System.out.println(maxLength);
     }
 }
