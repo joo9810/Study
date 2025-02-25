@@ -4,14 +4,17 @@ N = int(sys.stdin.readline())
 
 count = 0
 num = 1
-while True:
-    if num**2 > N:
-        break
-    else:
-        count += 1
-        num += 1
+while num**2 <= N:
+    count += 1
+    num += 1
 
 sys.stdout.write(str(count) + "\n")
+
+# 1
+# 1
+
+# 1 0
+# 1 2
 
 # 1 0 0
 # 1 2 3
